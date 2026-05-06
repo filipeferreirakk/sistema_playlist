@@ -8,12 +8,13 @@ class Musica:
 
     def __str__(self):
         return f"[{self.id}] {self.titulo} - {self.artista} | {self.genero} | {self.bpm} BPM"
-    
+
 
 class NodoLista:
     def __init__(self, musica):
         self.musica = musica
         self.proximo = None
+
 
 class Biblioteca:
     def __init__(self):
@@ -24,7 +25,6 @@ class Biblioteca:
         nova_musica = Musica(self.proximo_id, titulo, artista, genero, bpm)
         self.proximo_id += 1
         novo_nodo = NodoLista(nova_musica)
-
         if self.cabeca is None:
             self.cabeca = novo_nodo
         else:
@@ -32,14 +32,12 @@ class Biblioteca:
             while atual.proximo is not None:
                 atual = atual.proximo
             atual.proximo = novo_nodo
-
-        print(f"Música '{titulo}' adicionada com sucesso!")
+        print(f"Música '{titulo}' adicionada!")
 
     def listar(self):
         if self.cabeca is None:
             print("Biblioteca vazia.")
             return
-
         atual = self.cabeca
         while atual is not None:
             print(atual.musica)
@@ -58,12 +56,10 @@ class Biblioteca:
         if self.cabeca is None:
             print("Biblioteca vazia.")
             return
-
         if self.cabeca.musica.id == id:
             self.cabeca = self.cabeca.proximo
             print("Música removida.")
             return
-
         atual = self.cabeca
         while atual.proximo is not None:
             if atual.proximo.musica.id == id:
@@ -71,7 +67,6 @@ class Biblioteca:
                 print("Música removida.")
                 return
             atual = atual.proximo
-
         print("ID não encontrado.")
 
 
@@ -109,37 +104,3 @@ class Fila:
 
     def vazia(self):
         return self.inicio is None
-    
-
-def menu():
-    print("\n=== SISTEMA DE PLAYLIST ===")
-    print("1. Adicionar música à biblioteca")
-    print("2. Remover música da biblioteca")
-    print("3. Buscar música")
-    print("4. Listar biblioteca completa")
-    print("5. Montar fila de reprodução por humor")
-    print("6. Reproduzir próxima")
-    print("7. Exibir fila de humor")
-    print("8. Exibir histórico de reproduções")
-    print("9. Estatísticas")
-    print("10. Sair")
-
-
-def main():
-    biblioteca = Biblioteca()
-
-    while True:
-        menu()
-        opcao = input("\nEscolha uma opção: ").strip()
-
-        if opcao == "10":
-            print("Saindo...")
-            break
-        else:
-            print("Opção ainda não implementada.")
-
-
-if __name__ == "__main__":
-    main()
-
-
