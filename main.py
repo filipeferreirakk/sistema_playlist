@@ -32,7 +32,7 @@ class Biblioteca:
             while atual.proximo is not None:
                 atual = atual.proximo
             atual.proximo = novo_nodo
-        print(f"Música '{titulo}' adicionada!")
+        print(f"Música '{titulo}' adicionada com ID {nova_musica.id}!")
 
     def listar(self):
         if self.cabeca is None:
@@ -114,8 +114,27 @@ class Fila:
         return self.inicio is None
 
 
+def escolher_fila(filas_humor):
+    print("Escolha a fila:")
+    print("  1. Relaxar")
+    print("  2. Focar")
+    print("  3. Animar")
+    print("  4. Treinar")
+    escolha = input("Opção: ").strip()
+
+    mapa = {"1": "relaxar", "2": "focar", "3": "animar", "4": "treinar"}
+
+    if escolha not in mapa:
+        return None, None
+
+    nome = mapa[escolha]
+    return nome, filas_humor[nome]
+
+
 def menu():
-    print("\n=== SISTEMA DE PLAYLIST ===")
+    print("\n" + "="*30)
+    print("   SISTEMA DE PLAYLIST")
+    print("="*30)
     print("1. Adicionar música à biblioteca")
     print("2. Remover música da biblioteca")
     print("3. Buscar música")
@@ -126,6 +145,7 @@ def menu():
     print("8. Exibir histórico de reproduções")
     print("9. Estatísticas")
     print("10. Sair")
+    print("="*30)
 
 
 def main():
@@ -207,52 +227,30 @@ def main():
                 print(f"  Focar:    {fila_focar.tamanho} músicas")
                 print(f"  Animar:   {fila_animar.tamanho} músicas")
                 print(f"  Treinar:  {fila_treinar.tamanho} músicas")
-                
+
         elif opcao == "6":
-            print("Escolha a fila:")
-            print("  1. Relaxar")
-            print("  2. Focar")
-            print("  3. Animar")
-            print("  4. Treinar")
-            escolha = input("Opção: ").strip()
-
-            mapa = {"1": "relaxar", "2": "focar", "3": "animar", "4": "treinar"}
-
-            if escolha not in mapa:
+            nome, fila = escolher_fila(filas_humor)
+            if nome is None:
                 print("Opção inválida.")
+            elif fila.vazia():
+                print(f"A fila '{nome}' está vazia. Monte as filas primeiro (opção 5).")
             else:
-                nome = mapa[escolha]
-                fila = filas_humor[nome]
-                if fila.vazia():
-                    print(f"A fila '{nome}' está vazia. Monte as filas primeiro (opção 5).")
-                else:
-                    musica = fila.dequeue()
-                    print(f"\nReproduzindo: {musica}")
-                    historico.enqueue(musica)
+                musica = fila.dequeue()
+                print(f"\nReproduzindo: {musica}")
+                historico.enqueue(musica)
 
         elif opcao == "7":
-            print("Escolha a fila para visualizar:")
-            print("  1. Relaxar")
-            print("  2. Focar")
-            print("  3. Animar")
-            print("  4. Treinar")
-            escolha = input("Opção: ").strip()
-
-            mapa = {"1": "relaxar", "2": "focar", "3": "animar", "4": "treinar"}
-
-            if escolha not in mapa:
+            nome, fila = escolher_fila(filas_humor)
+            if nome is None:
                 print("Opção inválida.")
+            elif fila.vazia():
+                print(f"A fila '{nome}' está vazia.")
             else:
-                nome = mapa[escolha]
-                fila = filas_humor[nome]
-                if fila.vazia():
-                    print(f"A fila '{nome}' está vazia.")
-                else:
-                    print(f"\n--- Fila: {nome} ---")
-                    atual = fila.inicio
-                    while atual is not None:
-                        print(atual.musica)
-                        atual = atual.proximo
+                print(f"\n--- Fila: {nome} ---")
+                atual = fila.inicio
+                while atual is not None:
+                    print(atual.musica)
+                    atual = atual.proximo
 
         elif opcao == "8":
             if historico.vazia():
@@ -265,16 +263,16 @@ def main():
                     atual = atual.proximo
 
         elif opcao == "9":
-                    print("\n--- Estatísticas ---")
-                    print(f"Músicas na biblioteca: {biblioteca.tamanho()}")
-                    print(f"Fila Relaxar:  {fila_relaxar.tamanho} músicas")
-                    print(f"Fila Focar:    {fila_focar.tamanho} músicas")
-                    print(f"Fila Animar:   {fila_animar.tamanho} músicas")
-                    print(f"Fila Treinar:  {fila_treinar.tamanho} músicas")
-                    print(f"Reproduzidas:  {historico.tamanho} músicas")
-                    
+            print("\n--- Estatísticas ---")
+            print(f"Músicas na biblioteca: {biblioteca.tamanho()}")
+            print(f"Fila Relaxar:  {fila_relaxar.tamanho} músicas")
+            print(f"Fila Focar:    {fila_focar.tamanho} músicas")
+            print(f"Fila Animar:   {fila_animar.tamanho} músicas")
+            print(f"Fila Treinar:  {fila_treinar.tamanho} músicas")
+            print(f"Reproduzidas:  {historico.tamanho} músicas")
+
         elif opcao == "10":
-            print("Saindo...")
+            print("Encerrando o sistema. Até mais!")
             break
 
         else:
