@@ -137,6 +137,14 @@ def main():
             else:
                 biblioteca.inserir(titulo, artista, genero, int(bpm_input))
 
+        elif opcao == "2":
+            id_input = input("Digite o ID da música: ").strip()
+
+            if not id_input.isdigit():
+                print("ID inválido.")
+            else:
+                biblioteca.remover(int(id_input))
+
 
 if __name__ == "__main__":
     main()
