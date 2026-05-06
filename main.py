@@ -207,11 +207,16 @@ def main():
 
         elif opcao == "3":
             valor = input("Digite o ID ou o título da música: ").strip()
-            resultado = biblioteca.buscar(valor)
-            if resultado is None:
+            resultados = biblioteca.buscar(valor)
+
+            if not resultados:
                 print("Música não encontrada.")
+            elif len(resultados) == 1:
+                print(resultados[0])
             else:
-                print(resultado)
+                print(f"{len(resultados)} músicas encontradas:")
+                for m in resultados:
+                    print(m)
 
         elif opcao == "4":
             print("\n--- Biblioteca ---")
