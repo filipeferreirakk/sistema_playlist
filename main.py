@@ -106,6 +106,20 @@ class Fila:
         return self.inicio is None
 
 
+def menu():
+    print("\n=== SISTEMA DE PLAYLIST ===")
+    print("1. Adicionar música à biblioteca")
+    print("2. Remover música da biblioteca")
+    print("3. Buscar música")
+    print("4. Listar biblioteca completa")
+    print("5. Montar fila de reprodução por humor")
+    print("6. Reproduzir próxima")
+    print("7. Exibir fila de humor")
+    print("8. Exibir histórico de reproduções")
+    print("9. Estatísticas")
+    print("10. Sair")
+
+
 def main():
     biblioteca = Biblioteca()
 
@@ -139,7 +153,6 @@ def main():
 
         elif opcao == "2":
             id_input = input("Digite o ID da música: ").strip()
-
             if not id_input.isdigit():
                 print("ID inválido.")
             else:
@@ -148,7 +161,6 @@ def main():
         elif opcao == "3":
             valor = input("Digite o ID ou o título da música: ").strip()
             resultado = biblioteca.buscar(valor)
-
             if resultado is None:
                 print("Música não encontrada.")
             else:
@@ -198,7 +210,6 @@ def main():
             else:
                 nome = mapa[escolha]
                 fila = filas_humor[nome]
-
                 if fila.vazia():
                     print(f"A fila '{nome}' está vazia. Monte as filas primeiro (opção 5).")
                 else:
@@ -221,7 +232,6 @@ def main():
             else:
                 nome = mapa[escolha]
                 fila = filas_humor[nome]
-
                 if fila.vazia():
                     print(f"A fila '{nome}' está vazia.")
                 else:
@@ -230,6 +240,13 @@ def main():
                     while atual is not None:
                         print(atual.musica)
                         atual = atual.proximo
+
+        elif opcao == "10":
+            print("Saindo...")
+            break
+
+        else:
+            print("Opção inválida.")
 
 
 if __name__ == "__main__":
