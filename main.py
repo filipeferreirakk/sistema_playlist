@@ -8,3 +8,10 @@ class Musica:
 
     def __str__(self):
         return f"[{self.id}] {self.titulo} - {self.artista} | {self.genero} | {self.bpm} BPM"
+    
+
+class NodoLista:
+    def __init__(self, musica):
+        self.musica = musica
+        self.proximo = None
+
