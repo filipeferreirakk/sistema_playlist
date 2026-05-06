@@ -130,14 +130,12 @@ def main():
             titulo = input("Título: ").strip()
             artista = input("Artista: ").strip()
             genero = input("Gênero: ").strip()
-            bpm = input("BPM: ").strip()
-            biblioteca.inserir(titulo, artista, genero, int(bpm))
+            bpm_input = input("BPM: ").strip()
 
-        elif opcao == "10":
-            print("Saindo...")
-            break
-        else:
-            print("Opção ainda não implementada.")
+            if not bpm_input.isdigit() or int(bpm_input) <= 0:
+                print("BPM inválido! Digite um número inteiro maior que zero.")
+            else:
+                biblioteca.inserir(titulo, artista, genero, int(bpm_input))
 
 
 if __name__ == "__main__":
