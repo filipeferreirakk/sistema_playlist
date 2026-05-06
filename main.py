@@ -260,20 +260,14 @@ def main():
                     atual = atual.proximo
 
         elif opcao == "9":
-            total = 0
-            atual = biblioteca.cabeca
-            while atual is not None:
-                total += 1
-                atual = atual.proximo
-
-            print("\n--- Estatísticas ---")
-            print(f"Músicas na biblioteca: {total}")
-            print(f"Fila Relaxar:  {fila_relaxar.tamanho} músicas")
-            print(f"Fila Focar:    {fila_focar.tamanho} músicas")
-            print(f"Fila Animar:   {fila_animar.tamanho} músicas")
-            print(f"Fila Treinar:  {fila_treinar.tamanho} músicas")
-            print(f"Reproduzidas:  {historico.tamanho} músicas")
-
+                    print("\n--- Estatísticas ---")
+                    print(f"Músicas na biblioteca: {biblioteca.tamanho()}")
+                    print(f"Fila Relaxar:  {fila_relaxar.tamanho} músicas")
+                    print(f"Fila Focar:    {fila_focar.tamanho} músicas")
+                    print(f"Fila Animar:   {fila_animar.tamanho} músicas")
+                    print(f"Fila Treinar:  {fila_treinar.tamanho} músicas")
+                    print(f"Reproduzidas:  {historico.tamanho} músicas")
+                    
         elif opcao == "10":
             print("Saindo...")
             break
