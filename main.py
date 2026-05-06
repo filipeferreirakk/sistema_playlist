@@ -45,4 +45,13 @@ class Biblioteca:
             print(atual.musica)
             atual = atual.proximo
 
+    def buscar(self, valor):
+        atual = self.cabeca
+        while atual is not None:
+            m = atual.musica
+            if str(m.id) == str(valor) or m.titulo.lower() == valor.lower():
+                return m
+            atual = atual.proximo
+        return None
+
 
