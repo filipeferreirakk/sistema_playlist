@@ -154,6 +154,10 @@ def main():
             else:
                 print(resultado)
 
+        elif opcao == "4":
+            print("\n--- Biblioteca ---")
+            biblioteca.listar()
+
 
 if __name__ == "__main__":
     main()
