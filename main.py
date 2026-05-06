@@ -158,6 +158,31 @@ def main():
             print("\n--- Biblioteca ---")
             biblioteca.listar()
 
+        elif opcao == "5":
+            fila_relaxar.__init__()
+            fila_focar.__init__()
+            fila_animar.__init__()
+            fila_treinar.__init__()
+
+            atual = biblioteca.cabeca
+            while atual is not None:
+                m = atual.musica
+                if m.bpm <= 80:
+                    fila_relaxar.enqueue(m)
+                elif m.bpm <= 120:
+                    fila_focar.enqueue(m)
+                elif m.bpm <= 160:
+                    fila_animar.enqueue(m)
+                else:
+                    fila_treinar.enqueue(m)
+                atual = atual.proximo
+
+            print("Filas montadas!")
+            print(f"  Relaxar:  {fila_relaxar.tamanho} músicas")
+            print(f"  Focar:    {fila_focar.tamanho} músicas")
+            print(f"  Animar:   {fila_animar.tamanho} músicas")
+            print(f"  Treinar:  {fila_treinar.tamanho} músicas")
+
 
 if __name__ == "__main__":
     main()
