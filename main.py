@@ -19,3 +19,20 @@ class Biblioteca:
     def __init__(self):
         self.cabeca = None
         self.proximo_id = 1
+
+    def inserir(self, titulo, artista, genero, bpm):
+        nova_musica = Musica(self.proximo_id, titulo, artista, genero, bpm)
+        self.proximo_id += 1
+        novo_nodo = NodoLista(nova_musica)
+
+        if self.cabeca is None:
+            self.cabeca = novo_nodo
+        else:
+            atual = self.cabeca
+            while atual.proximo is not None:
+                atual = atual.proximo
+            atual.proximo = novo_nodo
+
+        print(f"Música '{titulo}' adicionada com sucesso!")
+
+
