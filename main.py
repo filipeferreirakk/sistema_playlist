@@ -15,3 +15,7 @@ class NodoLista:
         self.musica = musica
         self.proximo = None
 
+class Biblioteca:
+    def __init__(self):
+        self.cabeca = None
+        self.proximo_id = 1
