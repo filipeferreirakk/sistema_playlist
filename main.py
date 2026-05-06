@@ -106,22 +106,21 @@ class Fila:
         return self.inicio is None
 
 
-def menu():
-    print("\n=== SISTEMA DE PLAYLIST ===")
-    print("1. Adicionar música à biblioteca")
-    print("2. Remover música da biblioteca")
-    print("3. Buscar música")
-    print("4. Listar biblioteca completa")
-    print("5. Montar fila de reprodução por humor")
-    print("6. Reproduzir próxima")
-    print("7. Exibir fila de humor")
-    print("8. Exibir histórico de reproduções")
-    print("9. Estatísticas")
-    print("10. Sair")
-
-
 def main():
     biblioteca = Biblioteca()
+
+    fila_relaxar = Fila()
+    fila_focar = Fila()
+    fila_animar = Fila()
+    fila_treinar = Fila()
+    historico = Fila()
+
+    filas_humor = {
+        "relaxar": fila_relaxar,
+        "focar": fila_focar,
+        "animar": fila_animar,
+        "treinar": fila_treinar
+    }
 
     while True:
         menu()
