@@ -183,6 +183,29 @@ def main():
             print(f"  Animar:   {fila_animar.tamanho} músicas")
             print(f"  Treinar:  {fila_treinar.tamanho} músicas")
 
+        elif opcao == "6":
+            print("Escolha a fila:")
+            print("  1. Relaxar")
+            print("  2. Focar")
+            print("  3. Animar")
+            print("  4. Treinar")
+            escolha = input("Opção: ").strip()
+
+            mapa = {"1": "relaxar", "2": "focar", "3": "animar", "4": "treinar"}
+
+            if escolha not in mapa:
+                print("Opção inválida.")
+            else:
+                nome = mapa[escolha]
+                fila = filas_humor[nome]
+
+                if fila.vazia():
+                    print(f"A fila '{nome}' está vazia. Monte as filas primeiro (opção 5).")
+                else:
+                    musica = fila.dequeue()
+                    print(f"\nReproduzindo: {musica}")
+                    historico.enqueue(musica)
+
 
 if __name__ == "__main__":
     main()
