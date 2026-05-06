@@ -44,13 +44,14 @@ class Biblioteca:
             atual = atual.proximo
 
     def buscar(self, valor):
+        resultados = []
         atual = self.cabeca
         while atual is not None:
             m = atual.musica
             if str(m.id) == str(valor) or m.titulo.lower() == valor.lower():
-                return m
+                resultados.append(m)
             atual = atual.proximo
-        return None
+        return resultados
 
     def remover(self, id):
         if self.cabeca is None:
