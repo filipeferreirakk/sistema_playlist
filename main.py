@@ -154,7 +154,9 @@ def main():
             genero = input("Gênero: ").strip()
             bpm_input = input("BPM: ").strip()
 
-            if not bpm_input.isdigit() or int(bpm_input) <= 0:
+            if not titulo or not artista or not genero:
+                print("Título, artista e gênero não podem ser vazios.")
+            elif not bpm_input.isdigit() or int(bpm_input) <= 0:
                 print("BPM inválido! Digite um número inteiro maior que zero.")
             else:
                 biblioteca.inserir(titulo, artista, genero, int(bpm_input))
