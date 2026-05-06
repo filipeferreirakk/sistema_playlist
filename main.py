@@ -126,7 +126,14 @@ def main():
         menu()
         opcao = input("\nEscolha uma opção: ").strip()
 
-        if opcao == "10":
+        if opcao == "1":
+            titulo = input("Título: ").strip()
+            artista = input("Artista: ").strip()
+            genero = input("Gênero: ").strip()
+            bpm = input("BPM: ").strip()
+            biblioteca.inserir(titulo, artista, genero, int(bpm))
+
+        elif opcao == "10":
             print("Saindo...")
             break
         else:
