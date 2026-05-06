@@ -145,6 +145,15 @@ def main():
             else:
                 biblioteca.remover(int(id_input))
 
+        elif opcao == "3":
+            valor = input("Digite o ID ou o título da música: ").strip()
+            resultado = biblioteca.buscar(valor)
+
+            if resultado is None:
+                print("Música não encontrada.")
+            else:
+                print(resultado)
+
 
 if __name__ == "__main__":
     main()
