@@ -34,6 +34,15 @@ class Biblioteca:
             atual.proximo = novo_nodo
         print(f"Música '{titulo}' adicionada com ID {nova_musica.id}!")
 
+    def existe(self, titulo, artista):
+        atual = self.cabeca
+        while atual is not None:
+            m = atual.musica
+            if m.titulo.lower() == titulo.lower() and m.artista.lower() == artista.lower():
+                return True
+            atual = atual.proximo
+        return False
+
     def listar(self):
         if self.cabeca is None:
             print("Biblioteca vazia.")
@@ -77,15 +86,6 @@ class Biblioteca:
             count += 1
             atual = atual.proximo
         return count
-    
-    def existe(self, titulo, artista):
-        atual = self.cabeca
-        while atual is not None:
-            m = atual.musica
-            if m.titulo.lower() == titulo.lower() and m.artista.lower() == artista.lower():
-                return True
-            atual = atual.proximo
-        return False
 
 
 class NodoFila:
@@ -122,7 +122,7 @@ class Fila:
 
     def vazia(self):
         return self.inicio is None
-    
+
     def limpar(self):
         self.inicio = None
         self.fim = None
