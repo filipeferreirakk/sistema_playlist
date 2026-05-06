@@ -76,6 +76,15 @@ class Biblioteca:
             count += 1
             atual = atual.proximo
         return count
+    
+    def existe(self, titulo, artista):
+        atual = self.cabeca
+        while atual is not None:
+            m = atual.musica
+            if m.titulo.lower() == titulo.lower() and m.artista.lower() == artista.lower():
+                return True
+            atual = atual.proximo
+        return False
 
 
 class NodoFila:
