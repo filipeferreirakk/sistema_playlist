@@ -241,6 +241,16 @@ def main():
                         print(atual.musica)
                         atual = atual.proximo
 
+        elif opcao == "8":
+            if historico.vazia():
+                print("Nenhuma música reproduzida ainda.")
+            else:
+                print("\n--- Histórico ---")
+                atual = historico.inicio
+                while atual is not None:
+                    print(atual.musica)
+                    atual = atual.proximo
+
         elif opcao == "10":
             print("Saindo...")
             break
