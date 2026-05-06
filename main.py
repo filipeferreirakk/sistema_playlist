@@ -69,6 +69,14 @@ class Biblioteca:
             atual = atual.proximo
         print("ID não encontrado.")
 
+    def tamanho(self):
+        count = 0
+        atual = self.cabeca
+        while atual is not None:
+            count += 1
+            atual = atual.proximo
+        return count
+
 
 class NodoFila:
     def __init__(self, musica):
