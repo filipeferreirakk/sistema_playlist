@@ -35,4 +35,14 @@ class Biblioteca:
 
         print(f"Música '{titulo}' adicionada com sucesso!")
 
+    def listar(self):
+        if self.cabeca is None:
+            print("Biblioteca vazia.")
+            return
+
+        atual = self.cabeca
+        while atual is not None:
+            print(atual.musica)
+            atual = atual.proximo
+
 
