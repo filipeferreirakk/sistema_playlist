@@ -54,4 +54,24 @@ class Biblioteca:
             atual = atual.proximo
         return None
 
+    def remover(self, id):
+        if self.cabeca is None:
+            print("Biblioteca vazia.")
+            return
+
+        if self.cabeca.musica.id == id:
+            self.cabeca = self.cabeca.proximo
+            print("Música removida.")
+            return
+
+        atual = self.cabeca
+        while atual.proximo is not None:
+            if atual.proximo.musica.id == id:
+                atual.proximo = atual.proximo.proximo
+                print("Música removida.")
+                return
+            atual = atual.proximo
+
+        print("ID não encontrado.")
+
 
