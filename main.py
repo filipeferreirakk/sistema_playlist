@@ -192,6 +192,8 @@ def main():
                 print("Título, artista e gênero não podem ser vazios.")
             elif not bpm_input.isdigit() or int(bpm_input) <= 0:
                 print("BPM inválido! Digite um número inteiro maior que zero.")
+            elif biblioteca.existe(titulo, artista):
+                print(f"Já existe '{titulo}' de {artista} na biblioteca.")
             else:
                 biblioteca.inserir(titulo, artista, genero, int(bpm_input))
 
