@@ -206,6 +206,31 @@ def main():
                     print(f"\nReproduzindo: {musica}")
                     historico.enqueue(musica)
 
+        elif opcao == "7":
+            print("Escolha a fila para visualizar:")
+            print("  1. Relaxar")
+            print("  2. Focar")
+            print("  3. Animar")
+            print("  4. Treinar")
+            escolha = input("Opção: ").strip()
+
+            mapa = {"1": "relaxar", "2": "focar", "3": "animar", "4": "treinar"}
+
+            if escolha not in mapa:
+                print("Opção inválida.")
+            else:
+                nome = mapa[escolha]
+                fila = filas_humor[nome]
+
+                if fila.vazia():
+                    print(f"A fila '{nome}' está vazia.")
+                else:
+                    print(f"\n--- Fila: {nome} ---")
+                    atual = fila.inicio
+                    while atual is not None:
+                        print(atual.musica)
+                        atual = atual.proximo
+
 
 if __name__ == "__main__":
     main()
