@@ -112,6 +112,11 @@ class Fila:
 
     def vazia(self):
         return self.inicio is None
+    
+    def limpar(self):
+        self.inicio = None
+        self.fim = None
+        self.tamanho = 0
 
 
 def escolher_fila(filas_humor):
@@ -204,10 +209,10 @@ def main():
             if biblioteca.cabeca is None:
                 print("Biblioteca vazia, adicione músicas primeiro.")
             else:
-                fila_relaxar.__init__()
-                fila_focar.__init__()
-                fila_animar.__init__()
-                fila_treinar.__init__()
+                fila_relaxar.limpar()
+                fila_focar.limpar()
+                fila_animar.limpar()
+                fila_treinar.limpar()
 
                 atual = biblioteca.cabeca
                 while atual is not None:
